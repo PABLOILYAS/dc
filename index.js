@@ -1,16 +1,26 @@
 /**
- ██████╗░████████╗██╗░░██╗           
- ██╔══██╗╚══██╔══╝╚██╗██╔╝          
- ██████╔╝░░░██║░░░░╚███╔╝░          
- ██╔══██╗░░░██║░░░░██╔██╗░          
- ██║░░██║░░░██║░░░██╔╝╚██╗          
- ╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝          
-  GIT : https://github.com/RTX-GAMINGG/Bot-ghost-status-remover-by-RTX
-  DISCORD SERVER : https://discord.gg/FUEHs7RCqz
-  YOUTUBE : https://www.youtube.com/channel/UCPbAvYWBgnYhliJa1BIrv0A
- * **********************************************
- *   Code by RTX GAMING
- * **********************************************
+          _____                    _____          
+         /\    \                  /\    \         
+        /::\    \                /::\    \        
+       /::::\    \              /::::\    \       
+      /::::::\    \            /::::::\    \      
+     /:::/\:::\    \          /:::/\:::\    \     
+    /:::/__\:::\    \        /:::/__\:::\    \    
+   /::::\   \:::\    \      /::::\   \:::\    \   
+  /::::::\   \:::\    \    /::::::\   \:::\    \  
+ /:::/\:::\   \:::\____\  /:::/\:::\   \:::\    \ 
+/:::/  \:::\   \:::|    |/:::/  \:::\   \:::\____\
+\::/   |::::\  /:::|____|\::/    \:::\   \::/    /
+ \/____|:::::\/:::/    /  \/____/ \:::\   \/____/ 
+       |:::::::::/    /            \:::\    \     
+       |::|\::::/    /              \:::\____\    
+       |::| \::/____/                \::/    /    
+       |::|  ~|                       \/____/     
+       |::|   |                                   
+       \::|   |                                   
+        \:|   |                                   
+         \|___|                                   
+                            
  */
 
 
@@ -28,15 +38,15 @@ const client = new Client({
 const app = express();
 const port = 3000;
 app.get('/', (req, res) => {
-  res.send('YaY Your Bot Status Changed✨');
+  res.send(' Bot Status Changed✨');
 });
 app.listen(port, () => {
-  console.log(`🔗 Listening to BRIMO: http://localhost:${port}`);
-  console.log(`🔗 Powered By BRIMO`);
+  console.log(`🔗 Listening to PABLO: http://localhost:${port}`);
+  console.log(`🔗 Powered By PABLO`);
 });
 
 
-const statusMessages = ["Ramadhan Karim","Best Discord Bot"];
+const statusMessages = ["Royal Flush Bot","RF TACTICS"];
 
 
 let currentIndex = 0;
@@ -51,21 +61,6 @@ async function login() {
     process.exit(1);
   }
 }
-
-/**
- ██████╗░████████╗██╗░░██╗           
- ██╔══██╗╚══██╔══╝╚██╗██╔╝          
- ██████╔╝░░░██║░░░░╚███╔╝░          
- ██╔══██╗░░░██║░░░░██╔██╗░          
- ██║░░██║░░░██║░░░██╔╝╚██╗          
- ╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝          
-GIT : https://github.com/RTX-GAMINGG/Bot-ghost-status-remover-by-RTX
-  DISCORD SERVER : https://discord.gg/FUEHs7RCqz
-  YOUTUBE : https://www.youtube.com/channel/UCPbAvYWBgnYhliJa1BIrv0A
- * **********************************************
- *   Code by RTX GAMING
- * **********************************************
- */
 
 
 function updateStatusAndSendMessages() {
@@ -92,7 +87,7 @@ function updateStatusAndSendMessages() {
 
 client.once('ready', () => {
   console.log(`\x1b[36m%s\x1b[0m`, `|    ✅ Bot is ready as ${client.user.tag}`);
-  console.log(`\x1b[36m%s\x1b[0m`, `|    ✨HAPPY NEW YEAR MY DEAR FAMILY`);
+  console.log(`\x1b[36m%s\x1b[0m`, `|    ✨ROYAL FLUSH BOT`);
   console.log(`\x1b[36m%s\x1b[0m`, `|    ❤️WELCOME TO 2024`);
   updateStatusAndSendMessages();
 
@@ -102,18 +97,3 @@ client.once('ready', () => {
 });
 
 login();
-
-/**
- ██████╗░████████╗██╗░░██╗           
- ██╔══██╗╚══██╔══╝╚██╗██╔╝          
- ██████╔╝░░░██║░░░░╚███╔╝░          
- ██╔══██╗░░░██║░░░░██╔██╗░          
- ██║░░██║░░░██║░░░██╔╝╚██╗          
- ╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝          
-GIT : https://github.com/RTX-GAMINGG/Bot-ghost-status-remover-by-RTX
-  DISCORD SERVER : https://discord.gg/FUEHs7RCqz
-  YOUTUBE : https://www.youtube.com/channel/UCPbAvYWBgnYhliJa1BIrv0A
- * **********************************************
- *   Code by RTX GAMING
- * **********************************************
- */
