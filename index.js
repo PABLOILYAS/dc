@@ -46,7 +46,7 @@ app.listen(port, () => {
 });
 
 
-const statusMessages = ["Royal Flush Bot","RF TACTICS"];
+const statusMessages = ["Royal Bot","🔗 Powered By PABLOILYAS","Managing RF WhiteList","https://discord.gg/jhGKtmNsvx"];
 
 
 let currentIndex = 0;
