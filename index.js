@@ -46,7 +46,7 @@ app.listen(port, () => {
 });
 
 
-const statusMessages = ["PABLOAD BOT","🔗 Powered By PABLOILYAS","**ROYALFLUSH:** https://discord.gg/jhGKtmNsvx 🔗"];
+const statusMessages = ["PABLOAD BOT","🔗 Powered By PABLOILYAS","ROYALFLUSH: https://discord.gg/jhGKtmNsvx 🔗"];
 
 
 let currentIndex = 0;
