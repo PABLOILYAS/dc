@@ -38,7 +38,7 @@ const client = new Client({
 const app = express();
 const port = 3000;
 app.get('/', (req, res) => {
-  res.send(' Bot Status Changed✨');
+  res.send(' PABLOAD is a versatile Discord bot designed to assist in managing your server efficiently. With PABLOAD Bot, you can');
 });
 app.listen(port, () => {
   console.log(`🔗 Listening to PABLO: http://localhost:${port}`);
@@ -46,7 +46,7 @@ app.listen(port, () => {
 });
 
 
-const statusMessages = ["Royal Bot","🔗 Powered By PABLOILYAS","Managing RF WhiteList","https://discord.gg/jhGKtmNsvx"];
+const statusMessages = ["PABLOAD BOT","🔗 Powered By PABLOILYAS","**ROYALFLUSH:** https://discord.gg/jhGKtmNsvx 🔗"];
 
 
 let currentIndex = 0;
