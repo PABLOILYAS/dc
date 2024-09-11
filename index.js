@@ -24,7 +24,6 @@
  */
 
 
-
 const { Client, GatewayIntentBits, ActivityType, TextChannel } = require('discord.js');
 require('dotenv').config();
 const express = require('express');
@@ -46,11 +45,16 @@ app.listen(port, () => {
 });
 
 
-const statusMessages = ["PABLOAD BOT","🔗 Powered By PABLOILYAS","ROYALFLUSH: https://discord.gg/jhGKtmNsvx 🔗"];
-
+// Updated statusMessages to include type of activity and message
+const statusMessages = [
+  { type: ActivityType.Playing, message: "Battle Royale" },
+  { type: ActivityType.Listening, message: "Royal Bot Commands" },
+  { type: ActivityType.Watching, message: "ROYALFLUSH Server" },
+  { type: ActivityType.Competing, message: "in a Dev Challenge" }
+];
 
 let currentIndex = 0;
-const channelId = '';
+const channelId = ''; // Make sure to fill in the channel ID
 
 async function login() {
   try {
@@ -65,23 +69,22 @@ async function login() {
 
 function updateStatusAndSendMessages() {
   const currentStatus = statusMessages[currentIndex];
-  const nextStatus = statusMessages[(currentIndex + 1) % statusMessages.length];
 
+  // Set bot activity using the activity type and message
   client.user.setPresence({
-    activities: [{ name: currentStatus, type: ActivityType.Custom}],
-    status: 'dnd',
+    activities: [{ name: currentStatus.message, type: currentStatus.type }],
+    status: 'dnd', // You can set this to 'online', 'idle', etc.
   });
 
-  
+  // Sending a message to the channel about the current status
   const textChannel = client.channels.cache.get(channelId);
-
   if (textChannel instanceof TextChannel) {
-   
-    textChannel.send(`Bot status is: ${currentStatus}`);
+    textChannel.send(`Bot status is: ${currentStatus.message}`);
   } else {
-
+    console.log('Text channel not found or invalid.');
   }
 
+  // Update index to rotate through status messages
   currentIndex = (currentIndex + 1) % statusMessages.length;
 }
 
@@ -93,7 +96,7 @@ client.once('ready', () => {
 
   setInterval(() => {
     updateStatusAndSendMessages();
-  }, 10000);
+  }, 10000); // Rotate status every 10 seconds
 });
 
 login();
