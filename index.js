@@ -47,14 +47,14 @@ app.listen(port, () => {
 
 // Updated statusMessages to include type of activity and message
 const statusMessages = [
-  { type: ActivityType.Playing, message: "Battle Royale" },
-  { type: ActivityType.Listening, message: "Royal Bot Commands" },
+  { type: ActivityType.Playing, message: "Royal~Flush Battle Royale" },
+  { type: ActivityType.Listening, message: "to PABLOILYAS" },
   { type: ActivityType.Watching, message: "ROYALFLUSH Server" },
   { type: ActivityType.Competing, message: "in a Dev Challenge" }
 ];
 
 let currentIndex = 0;
-const channelId = ''; // Make sure to fill in the channel ID
+const channelId = '1283463512064004138'; // Make sure to fill in the channel ID
 
 async function login() {
   try {
@@ -90,13 +90,13 @@ function updateStatusAndSendMessages() {
 
 client.once('ready', () => {
   console.log(`\x1b[36m%s\x1b[0m`, `|    ✅ Bot is ready as ${client.user.tag}`);
-  console.log(`\x1b[36m%s\x1b[0m`, `|    ✨ROYAL FLUSH BOT`);
+  console.log(`\x1b[36m%s\x1b[0m`, `|    ✨ROYAL FLUSH BOT v2`);
   console.log(`\x1b[36m%s\x1b[0m`, `|    ❤️WELCOME TO 2024`);
   updateStatusAndSendMessages();
 
   setInterval(() => {
     updateStatusAndSendMessages();
-  }, 10000); // Rotate status every 10 seconds
+  }, 1000); // Rotate status every 10 seconds
 });
 
 login();
