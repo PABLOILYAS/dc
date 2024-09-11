@@ -23,7 +23,6 @@
                             
  */
 
-
 const { Client, GatewayIntentBits, ActivityType, TextChannel } = require('discord.js');
 require('dotenv').config();
 const express = require('express');
@@ -40,26 +39,21 @@ app.get('/', (req, res) => {
   res.send(' PABLOAD is a versatile Discord bot designed to assist in managing your server efficiently. With PABLOAD Bot, you can');
 });
 app.listen(port, () => {
-  console.log(`🔗 Listening to PABLO: http://localhost:${port}`);
-  console.log(`🔗 Powered By PABLO`);
+  console.log(🔗 Listening to PABLO: http://localhost:${port});
+  console.log(🔗 Powered By PABLO);
 });
 
 
-// Updated statusMessages to include type of activity and message
-const statusMessages = [
-  { type: ActivityType.Playing, message: "Royal~Flush Battle Royale" },
-  { type: ActivityType.Listening, message: "to PABLOILYAS" },
-  { type: ActivityType.Watching, message: "ROYALFLUSH Server" },
-  { type: ActivityType.Competing, message: "in a Dev Challenge" }
-];
+const statusMessages = ["PABLOAD BOT","🔗 Powered By PABLOILYAS","ROYALFLUSH: https://discord.gg/jhGKtmNsvx 🔗"];
+
 
 let currentIndex = 0;
-const channelId = '1283463512064004138'; // Make sure to fill in the channel ID
+const channelId = '1283463512064004138';
 
 async function login() {
   try {
     await client.login(process.env.token);
-    console.log(`\x1b[36m%s\x1b[0m`, `|    🐇 Logged in as ${client.user.tag}`);
+    console.log(\x1b[36m%s\x1b[0m, |    🐇 Logged in as ${client.user.tag});
   } catch (error) {
     console.error('Failed to log in:', error);
     process.exit(1);
@@ -69,34 +63,35 @@ async function login() {
 
 function updateStatusAndSendMessages() {
   const currentStatus = statusMessages[currentIndex];
+  const nextStatus = statusMessages[(currentIndex + 1) % statusMessages.length];
 
-  // Set bot activity using the activity type and message
   client.user.setPresence({
-    activities: [{ name: currentStatus.message, type: currentStatus.type }],
-    status: 'dnd', // You can set this to 'online', 'idle', etc.
+    activities: [{ name: currentStatus, type: ActivityType.Custom}],
+    status: 'dnd',
   });
 
-  // Sending a message to the channel about the current status
+  
   const textChannel = client.channels.cache.get(channelId);
+
   if (textChannel instanceof TextChannel) {
-    textChannel.send(`Bot status is: ${currentStatus.message}`);
+   
+    textChannel.send(Bot status is: ${currentStatus});
   } else {
-    console.log('Text channel not found or invalid.');
+
   }
 
-  // Update index to rotate through status messages
   currentIndex = (currentIndex + 1) % statusMessages.length;
 }
 
 client.once('ready', () => {
-  console.log(`\x1b[36m%s\x1b[0m`, `|    ✅ Bot is ready as ${client.user.tag}`);
-  console.log(`\x1b[36m%s\x1b[0m`, `|    ✨ROYAL FLUSH BOT v2`);
-  console.log(`\x1b[36m%s\x1b[0m`, `|    ❤️WELCOME TO 2024`);
+  console.log(\x1b[36m%s\x1b[0m, |    ✅ Bot is ready as ${client.user.tag});
+  console.log(\x1b[36m%s\x1b[0m, |    ✨ROYAL FLUSH BOT);
+  console.log(\x1b[36m%s\x1b[0m, |    ❤️WELCOME TO 2024);
   updateStatusAndSendMessages();
 
   setInterval(() => {
     updateStatusAndSendMessages();
-  }, 1000); // Rotate status every 10 seconds
+  }, 10000);
 });
 
 login();
