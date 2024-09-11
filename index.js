@@ -23,6 +23,7 @@
                             
  */
 
+
 const { Client, GatewayIntentBits, ActivityType, TextChannel } = require('discord.js');
 require('dotenv').config();
 const express = require('express');
@@ -39,8 +40,8 @@ app.get('/', (req, res) => {
   res.send(' PABLOAD is a versatile Discord bot designed to assist in managing your server efficiently. With PABLOAD Bot, you can');
 });
 app.listen(port, () => {
-  console.log(🔗 Listening to PABLO: http://localhost:${port});
-  console.log(🔗 Powered By PABLO);
+  console.log(`🔗 Listening to PABLO: http://localhost:${port}`);
+  console.log(`🔗 Powered By PABLO`);
 });
 
 
@@ -53,7 +54,7 @@ const channelId = '1283463512064004138';
 async function login() {
   try {
     await client.login(process.env.token);
-    console.log(\x1b[36m%s\x1b[0m, |    🐇 Logged in as ${client.user.tag});
+    console.log(`\x1b[36m%s\x1b[0m`, `|    🐇 Logged in as ${client.user.tag}`);
   } catch (error) {
     console.error('Failed to log in:', error);
     process.exit(1);
@@ -75,7 +76,7 @@ function updateStatusAndSendMessages() {
 
   if (textChannel instanceof TextChannel) {
    
-    textChannel.send(Bot status is: ${currentStatus});
+    textChannel.send(`Bot status is: ${currentStatus}`);
   } else {
 
   }
@@ -84,9 +85,9 @@ function updateStatusAndSendMessages() {
 }
 
 client.once('ready', () => {
-  console.log(\x1b[36m%s\x1b[0m, |    ✅ Bot is ready as ${client.user.tag});
-  console.log(\x1b[36m%s\x1b[0m, |    ✨ROYAL FLUSH BOT);
-  console.log(\x1b[36m%s\x1b[0m, |    ❤️WELCOME TO 2024);
+  console.log(`\x1b[36m%s\x1b[0m`, `|    ✅ Bot is ready as ${client.user.tag}`);
+  console.log(`\x1b[36m%s\x1b[0m`, `|    ✨ROYAL FLUSH BOT`);
+  console.log(`\x1b[36m%s\x1b[0m`, `|    ❤️WELCOME TO 2024`);
   updateStatusAndSendMessages();
 
   setInterval(() => {
