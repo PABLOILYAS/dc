@@ -22,6 +22,7 @@
          \|___|                                   
                             
  */
+
 const { Client, GatewayIntentBits, ActivityType, TextChannel } = require('discord.js');
 require('dotenv').config();
 const express = require('express');
@@ -89,7 +90,7 @@ const commands = {
 };
 
 // Message Listener - Made async to support await
-client.on('messageCreate', async (message) => {  // Changed to async
+client.on('messageCreate', async (message) => {
   // Ignore messages from the bot itself to avoid loops
   if (message.author.bot) return;
 
@@ -136,7 +137,7 @@ client.on('messageCreate', async (message) => {  // Changed to async
       message.channel.send(reply.trim());
     } catch (error) {
       console.error('Error with Claude API:', error);
-      message.channel.send('❌ Sorry, I couldn't process your message with Claude.');
+      message.channel.send('❌ Sorry, I could not process your message with Claude.');
     }
   }
 });
