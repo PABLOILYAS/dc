@@ -22,7 +22,6 @@
          \|___|                                   
                             
  */
-
 const { Client, GatewayIntentBits, ActivityType, TextChannel } = require('discord.js');
 require('dotenv').config();
 const express = require('express');
@@ -89,8 +88,8 @@ const commands = {
   },
 };
 
-// Message Listener
-client.on('messageCreate', (message) => {
+// Message Listener - Made async to support await
+client.on('messageCreate', async (message) => {  // Changed to async
   // Ignore messages from the bot itself to avoid loops
   if (message.author.bot) return;
 
@@ -109,11 +108,11 @@ client.on('messageCreate', (message) => {
   if (message.content.includes('بابلود')) {
     message.channel.send('👑 كيف اساعدك ؟');
   }
-   if (message.content.includes('يا بوت')) {
+  if (message.content.includes('يا بوت')) {
     message.channel.send('👑 احترم حالك! بس كيف اساعدك ؟');
   }
   
- // Example: Trigger Claude replies with a specific command
+  // Example: Trigger Claude replies with a specific command
   if (message.content.startsWith('!claude')) {
     const userMessage = message.content.replace('!claude', '').trim();
 
@@ -137,7 +136,7 @@ client.on('messageCreate', (message) => {
       message.channel.send(reply.trim());
     } catch (error) {
       console.error('Error with Claude API:', error);
-      message.channel.send('❌ Sorry, I couldn’t process your message with Claude.');
+      message.channel.send('❌ Sorry, I couldn't process your message with Claude.');
     }
   }
 });
