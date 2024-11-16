@@ -113,7 +113,7 @@ client.on('messageCreate', (message) => {
     message.channel.send('👑 احترم حالك! بس كيف اساعدك ؟');
   }
   
-    // Example: Trigger Claude replies with a specific command
+ // Example: Trigger Claude replies with a specific command
   if (message.content.startsWith('!claude')) {
     const userMessage = message.content.replace('!claude', '').trim();
 
