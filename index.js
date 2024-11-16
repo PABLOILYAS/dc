@@ -113,34 +113,50 @@ client.on('messageCreate', async (message) => {
     message.channel.send('👑 احترم حالك! بس كيف اساعدك ؟');
   }
   
-  // Example: Trigger Claude replies with a specific command
+ // Example: Trigger Claude replies with a specific command
   if (message.content.startsWith('!claude')) {
     const userMessage = message.content.replace('!claude', '').trim();
 
     try {
       const response = await axios.post(
-        'https://api.anthropic.com/v1/complete',
+        'https://api.anthropic.com/v1/messages',
         {
-          prompt: `You are Claude, a helpful and friendly assistant.\n\nUser: ${userMessage}\nClaude:`,
-          model: 'claude-v1', // Replace with the version of Claude you're using
-          max_tokens_to_sample: 200,
+          model: 'claude-3-opus-20240229',
+          max_tokens: 1024,
+          messages: [{
+            role: 'user',
+            content: userMessage
+          }]
         },
         {
           headers: {
-            'Authorization': `Bearer ${process.env.ANTHROPIC_API_KEY}`,
+            'x-api-key': process.env.ANTHROPIC_API_KEY,
+            'anthropic-version': '2023-06-01',
             'Content-Type': 'application/json',
           },
         }
       );
 
-      const reply = response.data.completion;
-      message.channel.send(reply.trim());
+      const reply = response.data.content[0].text;
+      
+      // Split long messages if they exceed Discord's character limit
+      const maxLength = 2000;
+      if (reply.length <= maxLength) {
+        await message.channel.send(reply);
+      } else {
+        // Split message into chunks
+        for (let i = 0; i < reply.length; i += maxLength) {
+          const chunk = reply.substring(i, i + maxLength);
+          await message.channel.send(chunk);
+        }
+      }
     } catch (error) {
-      console.error('Error with Claude API:', error);
+      console.error('Error with Claude API:', error.response?.data || error.message);
       message.channel.send('❌ Sorry, I could not process your message with Claude.');
     }
   }
 });
+
 
 client.once('ready', () => {
   console.log(`\x1b[36m%s\x1b[0m`, `|    ✅ Bot is ready as ${client.user.tag}`);
