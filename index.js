@@ -75,7 +75,7 @@ function updateStatusAndSendMessages() {
   const textChannel = client.channels.cache.get(channelId);
   
   if (textChannel instanceof TextChannel) {
-    textChannel.send(`Bot status is: ${currentStatus}`);
+    //textChannel.send(`Bot status is: ${currentStatus}`);
   }
 
   currentIndex = (currentIndex + 1) % statusMessages.length;
@@ -83,7 +83,7 @@ function updateStatusAndSendMessages() {
 
 // A map for simple commands
 const commands = {
-  '!ping': (message) => {
+  'pi ping': (message) => {
     message.channel.send('🏓 Pong!');
   },
 };
@@ -104,6 +104,12 @@ client.on('messageCreate', (message) => {
   // Example of checking for specific text within a message
   if (message.content.includes('Royal Bot')) {
     message.channel.send('👑 Did someone mention Royal Bot?');
+  }
+  if (message.content.includes('بابلود')) {
+    message.channel.send('👑 كيف اساعدك ؟');
+  }
+   if (message.content.includes('يا بوت')) {
+    message.channel.send('👑 احترم حالك! بس كيف اساعدك ؟');
   }
 });
 
