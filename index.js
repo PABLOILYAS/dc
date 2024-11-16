@@ -28,6 +28,7 @@ require('dotenv').config();
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios');
 
 // Initialize the client properly with required intents
 const client = new Client({
@@ -110,6 +111,34 @@ client.on('messageCreate', (message) => {
   }
    if (message.content.includes('يا بوت')) {
     message.channel.send('👑 احترم حالك! بس كيف اساعدك ؟');
+  }
+  
+    // Example: Trigger Claude replies with a specific command
+  if (message.content.startsWith('!claude')) {
+    const userMessage = message.content.replace('!claude', '').trim();
+
+    try {
+      const response = await axios.post(
+        'https://api.anthropic.com/v1/complete',
+        {
+          prompt: `You are Claude, a helpful and friendly assistant.\n\nUser: ${userMessage}\nClaude:`,
+          model: 'claude-v1', // Replace with the version of Claude you're using
+          max_tokens_to_sample: 200,
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${process.env.ANTHROPIC_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      const reply = response.data.completion;
+      message.channel.send(reply.trim());
+    } catch (error) {
+      console.error('Error with Claude API:', error);
+      message.channel.send('❌ Sorry, I couldn’t process your message with Claude.');
+    }
   }
 });
 
